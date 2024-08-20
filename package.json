@@ -1,1 +1,17 @@
 
+{
+  "name": "express-mongodb-app",
+  "version": "1.0.0",
+  "description": "An Express app connected to MongoDB Atlas for managing text areas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

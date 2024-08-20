@@ -1,12 +1,13 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const path = require('path');
 const app = express();
 const PORT = 8080;
 
-// Middleware to parse request bodies
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors()); // Enable CORS for all origins
 
 // MongoDB connection
 const connection = async () => {
@@ -43,16 +44,8 @@ app.post('/user/register', async (req, res) => {
   }
 });
 
-// Get all users route
-app.get('/user', async (req, res) => {
-  try {
-    const users = await UserModel.find();  // Retrieve all users (with textAreas)
-    return res.status(200).send(users);
-  } catch (error) {
-    console.log(error, "Error fetching users");
-    return res.status(500).send("Error Fetching Users");
-  }
-});
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Start the server
 app.listen(PORT, async () => {

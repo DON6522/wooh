@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
 const UserModel = mongoose.model('User', userSchema);
 
 // Register route
-app.post('/user/register', async (req, res) => {
+app.post('/user', async (req, res) => {
   try {
     const { textAreas } = req.body;
 
